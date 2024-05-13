@@ -6,6 +6,7 @@ Queue (antrian) adalah barisan elemen yang apabila elemen ditambah maka penambah
 
 
 Contoh:
+
 ![Screenshot 2024-05-13 082002](https://github.com/rennanvra/Praktikum-Algoritma-dan-Strukdat/assets/162097323/3d484602-09e0-48c1-8801-0cdde5a099da)
 
 Sebuah queue dalam  program  setidaknya harus mengandung    tiga variabel,    yakni: *head* untuk  penanda  bagian  depan  antrian, *tail* untuk  penanda  bagian  belakang  antrian,  dan *array data* untuk menyimpan  data-data  yang dimasukkan ke dalam queue tersebut[4].
@@ -375,17 +376,22 @@ Queue (antrian) adalah struktur data yang mengatur elemen-elemen dengan prinsip 
 
 Available: https://repository.unikom.ac.id/35976/1/Bab%20IX%20-%20Queue.pdf
 
+
 [2] Nurhasanah, Y. Kurniawan, and Sholihin, "Praktikum Struktur Data," Universitas Pamulang, Teknik Informatika S-1.
 
 Available: https://repository.unpam.ac.id/10199/1/KB1101_ALGORITMA%20%20DAN%20STRUKTUR%20DATA.pdf
 
+
 [3] Holle, K. F. H. (2022). Modul praktikum struktur data.
 
+
 Available: http://repository.uin-malang.ac.id/15252/7/15252.pdf
+
 
 [4] Adlaimi, N. (2019). STRUKTUR DATA MAJEMUK (QUEUE).
 
 Available: https://osf.io/preprints/osf/cs53p
+
 
 [5] Rizky, A. (2023). Penerapan Algoritma Queue Pada Aplikasi Pemesanan Obat Berbasis Mobile Pada Apotek Aruba Farma Depok. LOGIC: Jurnal Ilmu Komputer dan Pendidikan, 1(5), 1168-1177.
 
