@@ -582,7 +582,7 @@ public:
         }
     }
 
-    void insertChild(const string& parent, const string& leftChild, const string& rightChild) {
+    void insertLeftChild(const string& parent, const string& leftChild) {
         Node* parentNode = findNode(root, parent);
         if (parentNode == nullptr) {
             cout << "Parent node tidak ditemukan." << endl;
@@ -595,6 +595,14 @@ public:
             } else {
                 cout << "Left child sudah ada untuk " << parent << endl;
             }
+        }
+    }
+
+    void insertRightChild(const string& parent, const string& rightChild) {
+        Node* parentNode = findNode(root, parent);
+        if (parentNode == nullptr) {
+            cout << "Parent node tidak ditemukan." << endl;
+            return;
         }
         if (rightChild != "None") {
             if (parentNode->right == nullptr) {
@@ -685,18 +693,16 @@ int main() {
 
     do {
         cout << "\nMenu:\n";
-        cout << "1. Data untuk root node\n";
-        cout << "2. Tambah child kanan dan child kiri\n";
-        cout << "3. Update node\n";
-        cout << "4. Find node\n";
-        cout << "5. PreOrder Traversal\n";
-        cout << "6. InOrder Traversal\n";
-        cout << "7. PostOrder Traversal\n";
+        cout << "1. Root Node\n";
+        cout << "2. Left Child\n";
+        cout << "3. Right Child\n";
+        cout << "4. Find Node\n";
+        cout << "5. PreOrder\n";
+        cout << "6. InOrder\n";
+        cout << "7. PostOrder\n";
         cout << "8. Print Child\n";
         cout << "9. Print Descendants\n";
-        cout << "10. Hapus Tree\n";
-        cout << "11. Hapus Subtree\n";
-        cout << "12. Keluar\n";
+        cout << "10. Keluar\n";
         cout << "Pilihan: ";
         cin >> pilihan;
         cin.ignore();
@@ -713,16 +719,14 @@ int main() {
                 getline(cin, value);
                 cout << "Masukkan nama left child (atau 'None'): ";
                 getline(cin, leftChild);
-                cout << "Masukkan nama right child (atau 'None'): ";
-                getline(cin, rightChild);
-                tree.insertChild(value, leftChild, rightChild);
+                tree.insertLeftChild(value, leftChild);
                 break;
             case 3:
-                cout << "Masukkan nama node yang akan diupdate: ";
+                cout << "Masukkan nama parent node: ";
                 getline(cin, value);
-                cout << "Masukkan nama baru untuk node: ";
-                getline(cin, leftChild); // reuse variable for new value
-                tree.updateNode(value, leftChild);
+                cout << "Masukkan nama right child (atau 'None'): ";
+                getline(cin, rightChild);
+                tree.insertRightChild(value, rightChild);
                 break;
             case 4:
                 cout << "Masukkan nama node yang dicari: ";
@@ -749,28 +753,20 @@ int main() {
                 tree.printDescendants(value);
                 break;
             case 10:
-                tree.deleteTree();
-                break;
-            case 11:
-                cout << "Masukkan nama node yang ingin dihapus subtree-nya: ";
-                getline(cin, value);
-                tree.deleteSubtree(value);
-                break;
-            case 12:
                 cout << "Keluar" << endl;
                 break;
             default:
                 cout << "Pilihan tidak valid." << endl;
                 break;
         }
-    } while (pilihan != 12);
+    } while (pilihan != 10);
 
     return 0;
 }
 ```
 #### Output
 
-![Screenshot 2024-06-09 223911](https://github.com/rennanvra/Praktikum-Algoritma-dan-Strukdat/assets/162097323/6a7223d6-2a6f-4262-92f1-4f5b91e18273)
+![image](https://github.com/rennanvra/Praktikum-Algoritma-dan-Strukdat/assets/162097323/86cf918b-30b0-4ba0-b0db-325fec4afef8)
 
 #### Interpretasi:
 Program di atas adalah implementasi pohon biner yang bisa kita modifikasi. Jadi, kita bisa tambahkan, update, atau hapus simpul sesuai keinginan. Saat kita jalankan program, kita diminta untuk pilih aksi yang ingin kita lakukan. Misalnya, kita bisa tambahkan simpul, lalu lihat bagaimana penelusuran pohonnya, atau mungkin kita ingin hapus bagian tertentu dari pohon. Program ini memberi kita kontrol penuh atas pohon biner kita dan memberi tahu kita tentang apa yang terjadi setiap kali kita lakukan sesuatu. Jadi, itu sangat membantu untuk memahami dan mengelola struktur pohon biner kita sendiri.

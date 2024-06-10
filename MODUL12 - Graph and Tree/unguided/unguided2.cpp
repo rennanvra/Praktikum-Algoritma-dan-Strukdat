@@ -100,7 +100,7 @@ public:
         }
     }
 
-    void insertChild(const string& parent, const string& leftChild, const string& rightChild) {
+    void insertLeftChild(const string& parent, const string& leftChild) {
         Node* parentNode = findNode(root, parent);
         if (parentNode == nullptr) {
             cout << "Parent node tidak ditemukan." << endl;
@@ -113,6 +113,14 @@ public:
             } else {
                 cout << "Left child sudah ada untuk " << parent << endl;
             }
+        }
+    }
+
+    void insertRightChild(const string& parent, const string& rightChild) {
+        Node* parentNode = findNode(root, parent);
+        if (parentNode == nullptr) {
+            cout << "Parent node tidak ditemukan." << endl;
+            return;
         }
         if (rightChild != "None") {
             if (parentNode->right == nullptr) {
@@ -203,18 +211,16 @@ int main() {
 
     do {
         cout << "\nMenu:\n";
-        cout << "1. Data untuk root node\n";
-        cout << "2. Tambah child kanan dan child kiri\n";
-        cout << "3. Update node\n";
-        cout << "4. Find node\n";
-        cout << "5. PreOrder Traversal\n";
-        cout << "6. InOrder Traversal\n";
-        cout << "7. PostOrder Traversal\n";
+        cout << "1. Root Node\n";
+        cout << "2. Left Child\n";
+        cout << "3. Right Child\n";
+        cout << "4. Find Node\n";
+        cout << "5. PreOrder\n";
+        cout << "6. InOrder\n";
+        cout << "7. PostOrder\n";
         cout << "8. Print Child\n";
         cout << "9. Print Descendants\n";
-        cout << "10. Hapus Tree\n";
-        cout << "11. Hapus Subtree\n";
-        cout << "12. Keluar\n";
+        cout << "10. Keluar\n";
         cout << "Pilihan: ";
         cin >> pilihan;
         cin.ignore();
@@ -231,16 +237,14 @@ int main() {
                 getline(cin, value);
                 cout << "Masukkan nama left child (atau 'None'): ";
                 getline(cin, leftChild);
-                cout << "Masukkan nama right child (atau 'None'): ";
-                getline(cin, rightChild);
-                tree.insertChild(value, leftChild, rightChild);
+                tree.insertLeftChild(value, leftChild);
                 break;
             case 3:
-                cout << "Masukkan nama node yang akan diupdate: ";
+                cout << "Masukkan nama parent node: ";
                 getline(cin, value);
-                cout << "Masukkan nama baru untuk node: ";
-                getline(cin, leftChild); // reuse variable for new value
-                tree.updateNode(value, leftChild);
+                cout << "Masukkan nama right child (atau 'None'): ";
+                getline(cin, rightChild);
+                tree.insertRightChild(value, rightChild);
                 break;
             case 4:
                 cout << "Masukkan nama node yang dicari: ";
@@ -267,21 +271,13 @@ int main() {
                 tree.printDescendants(value);
                 break;
             case 10:
-                tree.deleteTree();
-                break;
-            case 11:
-                cout << "Masukkan nama node yang ingin dihapus subtree-nya: ";
-                getline(cin, value);
-                tree.deleteSubtree(value);
-                break;
-            case 12:
                 cout << "Keluar" << endl;
                 break;
             default:
                 cout << "Pilihan tidak valid." << endl;
                 break;
         }
-    } while (pilihan != 12);
+    } while (pilihan != 10);
 
     return 0;
 }
