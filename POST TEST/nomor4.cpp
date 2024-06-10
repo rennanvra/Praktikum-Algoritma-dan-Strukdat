@@ -6,3 +6,10 @@
 #include <iostream>
 using namespace std;
 
+struct Node {
+    string data;
+    Node *next;
+};
+
+Node *head = NULL;
+Node *tail = NULL;
